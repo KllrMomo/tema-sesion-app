@@ -17,11 +17,11 @@ export default function HomeScreen({ onLogout }) {
                     style: 'destructive',
                     onPress: async () => {
                         try {
-                            // TODO: Eliminar token de AsyncStorage
-                            // Pista: Usa AsyncStorage.removeItem(TOKEN_KEY)
-                            onLogout();
+                            // Se elimina el token para no mantener la sesión activa
+                            await AsyncStorage.removeItem(TOKEN_KEY); [cite: 622, 902]
+                            onLogout(); [cite: 903]
                         } catch (error) {
-                            console.error('Error al cerrar sesión:', error);
+                            console.error('Error al cerrar sesión:', error); [cite: 905]
                         }
                     },
                 },
