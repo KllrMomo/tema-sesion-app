@@ -16,19 +16,16 @@ export default function App() {
 
   const checkToken = async () => {
     try {
-      // TODO: Intentar leer el token de AsyncStorage
-      // Pista 1: Usa AsyncStorage.getItem(TOKEN_KEY)
-      // Pista 2: Si el token existe (no es null), llama a setIsLoggedIn(true)
-      // Pista 3: Si no existe, el usuario debe hacer login
-      // Simular delay de carga (opcional, para ver splash)
+      // Simular delay de carga
       await new Promise(resolve => setTimeout(resolve, 1000));
+
+      // obtener token
       const token = await AsyncStorage.getItem(TOKEN_KEY);
       if (token !== null) {
-        setIsLoggedIn(true);
+        setIsLoggedIn(true); // si no es nulo iniciar sesion
       } else {
-        setIsLoggedIn(false);
+        setIsLoggedIn(false); // si es nulo no iniciar sesion
       }
-      // CÓDIGO A COMPLETAR AQUÍ (parte de la tarea)
     } catch (error) {
       console.error('Error al verificar token:', error);
     } finally {

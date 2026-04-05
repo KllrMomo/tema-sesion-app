@@ -30,8 +30,7 @@ export default function LoginScreen({ onLoginSuccess }) {
                 // Generar token simulado
                 const fakeToken = `token_${Date.now()}_${Math.random()}`;
                 try {
-                    // TODO: Guardar token en AsyncStorage
-                    // Pista: Usa AsyncStorage.setItem(TOKEN_KEY, fakeToken)
+                    // se guarda el token en AsyncStorage
                     await AsyncStorage.setItem(TOKEN_KEY, fakeToken);
                     onLoginSuccess(fakeToken);
                 } catch (error) {
