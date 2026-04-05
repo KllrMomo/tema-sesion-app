@@ -17,8 +17,7 @@ export default function HomeScreen({ onLogout }) {
                     style: 'destructive',
                     onPress: async () => {
                         try {
-                            // TODO: Eliminar token de AsyncStorage
-                            // Pista: Usa AsyncStorage.removeItem(TOKEN_KEY)
+                            // Se elimina el token para no mantener la sesión activa
                             await AsyncStorage.removeItem(TOKEN_KEY);
                             onLogout();
                         } catch (error) {
