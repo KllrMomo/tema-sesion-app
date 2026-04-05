@@ -13,27 +13,34 @@ export default function App() {
   useEffect(() => {
     checkToken();
   }, []);
+
   const checkToken = async () => {
     try {
-      // TODO: Intentar leer el token de AsyncStorage
-      // Pista 1: Usa AsyncStorage.getItem(TOKEN_KEY)
-      // Pista 2: Si el token existe (no es null), llama a setIsLoggedIn(true)
-      // Pista 3: Si no existe, el usuario debe hacer login
-      // Simular delay de carga (opcional, para ver splash)
+      // Simular delay de carga
       await new Promise(resolve => setTimeout(resolve, 1000));
-      // CÓDIGO A COMPLETAR AQUÍ (parte de la tarea)
+
+      // obtener token
+      const token = await AsyncStorage.getItem(TOKEN_KEY);
+      if (token !== null) {
+        setIsLoggedIn(true); // si no es nulo iniciar sesion
+      } else {
+        setIsLoggedIn(false); // si es nulo no iniciar sesion
+      }
     } catch (error) {
       console.error('Error al verificar token:', error);
     } finally {
       setIsLoading(false);
     }
   };
+
   const handleLoginSuccess = (token) => {
     setIsLoggedIn(true);
   };
-  const handleLogout = () => {
+
+  const handleLogout = async() => {
     setIsLoggedIn(false);
   };
+
   // SplashScreen simulado
   if (isLoading) {
     return (
