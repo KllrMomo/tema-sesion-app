@@ -19,6 +19,7 @@ export default function HomeScreen({ onLogout }) {
                         try {
                             // TODO: Eliminar token de AsyncStorage
                             // Pista: Usa AsyncStorage.removeItem(TOKEN_KEY)
+                            await AsyncStorage.removeItem(TOKEN_KEY);
                             onLogout();
                         } catch (error) {
                             console.error('Error al cerrar sesión:', error);

@@ -8,11 +8,14 @@ import {
     Alert,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const TOKEN_KEY = 'user_token';
+
 export default function LoginScreen({ onLoginSuccess }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+
     const handleLogin = async () => {
         // Validación básica
         if (!email || !password) {
@@ -29,6 +32,7 @@ export default function LoginScreen({ onLoginSuccess }) {
                 try {
                     // TODO: Guardar token en AsyncStorage
                     // Pista: Usa AsyncStorage.setItem(TOKEN_KEY, fakeToken)
+                    await AsyncStorage.setItem(TOKEN_KEY, fakeToken);
                     onLoginSuccess(fakeToken);
                 } catch (error) {
                     console.error('Error al guardar token:', error);
@@ -40,6 +44,7 @@ export default function LoginScreen({ onLoginSuccess }) {
             setIsLoading(false);
         }, 2000);
     };
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}> Iniciar Sesión</Text>
